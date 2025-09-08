@@ -1,0 +1,22 @@
+a {
+  text-decoration: none !important;
+  color: red;
+}
+Nav {
+  background-color: #778292;
+  color: rgb(0, 255, 247);
+}
+.search-box-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-box-wrapper input {
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #dee2e6;
+}
+
+.search-box-wrapper input:focus {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border-color: #0d6efd; /* bootstrap primary color */
+}
