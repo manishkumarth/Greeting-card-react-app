@@ -1,20 +1,22 @@
-import { Link, NavLink } from 'react-router-dom';
-import '../index.css';
+import { NavLink } from "react-router-dom";
+import "../index.css";
+
 function Nav() {
   return (
-    <nav className="bg-blue-600 text-white px-6 py-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <h1 className="text-xl font-bold tracking-wide">Greeting_App</h1>
+    <nav className="bg-primary text-white shadow-sm fixed-top">
+      <div className="container d-flex justify-content-between align-items-center py-2">
+        
+        {/* Logo on Left */}
+        <h1 className="h4 m-0">
+          Greeting<span className="text-warning">App</span>
+        </h1>
 
-        {/* Links */}
-        <div className="space-x-6">
+        {/* Buttons on Right */}
+        <div className="d-flex gap-3">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `hover:text-yellow-300 transition ${
-                isActive ? 'font-semibold' : ''
-              }`
+              `btn ${isActive ? "btn-warning text-dark" : "btn-outline-light"}`
             }
           >
             Home
@@ -23,9 +25,7 @@ function Nav() {
           <NavLink
             to="/login"
             className={({ isActive }) =>
-              `hover:text-yellow-300 transition ${
-                isActive ? 'font-semibold' : ''
-              }`
+              `btn ${isActive ? "btn-warning text-dark" : "btn-outline-light"}`
             }
           >
             Login

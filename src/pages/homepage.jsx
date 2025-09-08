@@ -5,7 +5,9 @@ import Template from '../components/template';
 function HomePage() {
   return (
     <>
+      <div className='mt-5'>
       <SearchBox />
+      </div>
       <Template />
    
     </>
