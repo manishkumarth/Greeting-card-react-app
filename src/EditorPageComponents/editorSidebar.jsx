@@ -1,16 +1,16 @@
-import { useLayoutEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 
-function EditorSideBar() {
+function EditorSideBar({ onAddHeading }) {
   const [isOpen, setIsOpen] = useState(true);
 
+  // ✅ Adjust sidebar open/closed based on device width
   useLayoutEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth);
       if (window.innerWidth >= 768) {
-        // desktop default: open
+        // desktop: open by default
         setIsOpen(true);
       } else {
-        // mobile default: closed
+        // mobile: closed by default
         setIsOpen(false);
       }
     };
@@ -23,7 +23,6 @@ function EditorSideBar() {
 
   return (
     <>
-      {/* Toggle Button */}
       <button
         className="btn btn-primary toggle-btn"
         onClick={() => setIsOpen(!isOpen)}
@@ -32,15 +31,14 @@ function EditorSideBar() {
         {isOpen ? "⬅ Hide Tools" : "➡ Show Tools"}
       </button>
 
-      {/* Sidebar */}
       <div
         className={`editor-sidebar shadow-lg p-3 ${isOpen ? "open" : "closed"}`}
         style={{
           position: "fixed",
-          top: "70px", // space for navbar (adjust if navbar height is diff)
+          top: "70px",
           left: isOpen ? "0" : "-260px",
           width: "250px",
-          height: "calc(100vh - 70px)", // full height minus navbar
+          height: "calc(100vh - 70px)",
           background: "#fff",
           transition: "left 0.3s ease-in-out",
           zIndex: 1040,
@@ -51,7 +49,12 @@ function EditorSideBar() {
           <button className="btn btn-outline-primary w-100">➕ Background</button>
           <button className="btn btn-outline-success w-100">🟠 Circle Image</button>
           <button className="btn btn-outline-info w-100">⬛ Square Image</button>
-          <button className="btn btn-outline-warning w-100">🔠 Heading</button>
+          <button
+            className="btn btn-outline-warning w-100"
+            onClick={onAddHeading} // ✅ call parent function
+          >
+            🔠 Heading
+          </button>
           <button className="btn btn-outline-dark w-100">✍ Paragraph</button>
         </div>
       </div>
