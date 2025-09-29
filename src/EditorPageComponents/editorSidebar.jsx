@@ -2,6 +2,8 @@ import { useState, useLayoutEffect } from "react";
 
 function EditorSideBar({ onAddHeading }) {
   const [isOpen, setIsOpen] = useState(true);
+  const [isBgtoggle, setIsBgtoggle] = useState(false)
+  // const []
 
   // ✅ Adjust sidebar open/closed based on device width
   useLayoutEffect(() => {
@@ -46,7 +48,21 @@ function EditorSideBar({ onAddHeading }) {
       >
         <h5 className="text-center mb-4">Editor Tools</h5>
         <div className="d-flex flex-column gap-3">
-          <button className="btn btn-outline-primary w-100">➕ Background</button>
+          <button
+            onClick={(e) => setIsBgtoggle(!isBgtoggle)}
+            className="btn btn-outline-primary w-100">➕ Background</button>
+          {isBgtoggle ? (
+            <div style={{ transition: ".5s ease" }}>
+              <div>
+                <label for="exampleColorInput" class="form-label">color</label>
+                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
+              </div>
+              <div>
+                <label for="formFileSm" class="form-label">image</label>
+                <input class="form-control form-control-sm" id="formFileSm" type="file" />
+              </div>
+            </div>
+          ) : ""}
           <button className="btn btn-outline-success w-100">🟠 Circle Image</button>
           <button className="btn btn-outline-info w-100">⬛ Square Image</button>
           <button
