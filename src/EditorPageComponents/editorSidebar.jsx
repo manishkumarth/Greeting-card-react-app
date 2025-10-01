@@ -33,7 +33,7 @@ function EditorSideBar({ onAddHeading }) {
       {
         isImg && (
           <CropModal
-            type="circle"
+            type="squre"
             bgRatio={25 / 30}
             image={file} />
         )
