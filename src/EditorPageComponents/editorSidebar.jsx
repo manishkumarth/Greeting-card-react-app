@@ -33,9 +33,9 @@ function EditorSideBar({ onAddHeading }) {
       {
         isImg && (
           <CropModal
-            type="squre"
+            type="square"
             bgRatio={25 / 30}
-            image={file} />
+            image={URL.createObjectURL(file)} />
         )
       }
       <button
@@ -75,10 +75,9 @@ function EditorSideBar({ onAddHeading }) {
                 <input className="form-control form-control-sm"
                   onChange={(e) => {
                     setIsImg(true);
-                    const files = e.target.files[0];
-                    if (files) {
-                      setfile(URL.createObjectURL(files));
-                    }
+                   
+                      setfile(e.target.files[0]);
+              
                     setTimeout(() => {
                       showLoader("cropper")
                     }, 1000)
