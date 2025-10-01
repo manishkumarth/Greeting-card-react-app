@@ -22,15 +22,17 @@ const CropModal = ({image="https://images.unsplash.com/photo-1599140849279-10145
     }
   };
   const inputImg=useRef(null)
-const handleChanefile=()=>{
-  setImg(inputImg.current.value)
-  console.log(inputImg.current.value)
-}
-
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // temporary URL banayenge for preview
+      setPreview(URL.createObjectURL(file));
+    }
+  };
   return (
     <div>
     <div>
-      <input onChange={()=>handleChanefile()} type="file" name="" ref={inputImg} />
+      <input onChange={handleFileChange} type="file" accept="image/*" ref={inputImg} />
     </div>
       <Cropper
         ref={cropperRef}
