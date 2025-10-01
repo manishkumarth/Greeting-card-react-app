@@ -1,5 +1,5 @@
 
 
-function Cropeimages(){
-    console.log("this is cropp")
+export const getCroppedImg=()=>{
+    return src
 }
