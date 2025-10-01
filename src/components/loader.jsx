@@ -8,7 +8,7 @@ function Loader() {
       tabIndex="1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="false"
-      style={{ background: 'rgb(227 229 232 / 74%)' }}
+      style={{ background: 'rgb(227 229 232 / 74%)'}}
     >
       <div className="modal-dialog">
         {/* <div className="modal-content">
@@ -42,3 +42,8 @@ function Loader() {
   );
 }
 export default Loader;
+
+
+
+
+

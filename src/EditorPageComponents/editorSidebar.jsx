@@ -1,8 +1,13 @@
 import { useState, useLayoutEffect } from "react";
+import CropModal from "../components/cropmodal";
+import { UseModalHook } from "../hooks/modals";
 
 function EditorSideBar({ onAddHeading }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isBgtoggle, setIsBgtoggle] = useState(false)
+  const [isImg, setIsImg] = useState(false)
+  const [file, setfile] = useState("");
+  const [showLoader, hideLoader] = UseModalHook()
   // const []
 
   // ✅ Adjust sidebar open/closed based on device width
@@ -25,6 +30,14 @@ function EditorSideBar({ onAddHeading }) {
 
   return (
     <>
+      {
+        isImg && (
+          <CropModal
+            type="circle"
+            bgRatio={25 / 30}
+            image={file} />
+        )
+      }
       <button
         className="btn btn-primary toggle-btn"
         onClick={() => setIsOpen(!isOpen)}
@@ -54,12 +67,23 @@ function EditorSideBar({ onAddHeading }) {
           {isBgtoggle ? (
             <div style={{ transition: ".5s ease" }}>
               <div>
-                <label for="exampleColorInput" class="form-label">color</label>
-                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
+                <label for="exampleColorInput" className="form-label">color</label>
+                <input type="color" className="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
               </div>
               <div>
-                <label for="formFileSm" class="form-label">image</label>
-                <input class="form-control form-control-sm" id="formFileSm" type="file" />
+                <label for="formFileSm" className="form-label">image</label>
+                <input className="form-control form-control-sm"
+                  onChange={(e) => {
+                    setIsImg(true);
+                    const files = e.target.files[0];
+                    if (files) {
+                      setfile(URL.createObjectURL(files));
+                    }
+                    setTimeout(() => {
+                      showLoader("cropper")
+                    }, 1000)
+                  }}
+                  id="formFileSm" accept="image" type="file" />
               </div>
             </div>
           ) : ""}
@@ -74,6 +98,7 @@ function EditorSideBar({ onAddHeading }) {
           <button className="btn btn-outline-dark w-100">✍ Paragraph</button>
         </div>
       </div>
+
     </>
   );
 }
