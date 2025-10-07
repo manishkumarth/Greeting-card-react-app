@@ -16,7 +16,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/pages/loginpage" element={<LoginPage />} />
         <Route path="/editPage" element={ <EditorPage /> } />
       </Routes>
       <Loader />
