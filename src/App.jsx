@@ -16,8 +16,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/editPage" element={ <EditorPage /> } />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="editPage" element={ <EditorPage /> } />
       </Routes>
       <Loader />
       <PopUpModal />
