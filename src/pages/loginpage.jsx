@@ -1,4 +1,4 @@
-import CropModal from "../components/cropmodal";
+// import CropModal from "../components/cropmodal";
 
 function LoginPage() {
   return (
