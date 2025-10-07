@@ -41,7 +41,7 @@ function EditTemplate() {
                     flex: 1,
                     position: "relative",
                     height: "100vh",
-                    background: "#f5f5f5",
+                   
                 }}
             >
                 {headings.map((heading) => (

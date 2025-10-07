@@ -8,7 +8,7 @@ function LoginPage() {
           Login
         </h2>
       
-        {/* <form className="space-y-4">
+        <form className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email Address
@@ -37,11 +37,9 @@ function LoginPage() {
           >
             Login
           </button>
-        </form> */}
+        </form>
 
-     <div style={{border:"1px solid red",width:"40px",height:"40px"}}>
-     <CropModal style={{border:"1px solid blue"}}/>
-     </div>
+     
       </div>
     </div>
   ); 

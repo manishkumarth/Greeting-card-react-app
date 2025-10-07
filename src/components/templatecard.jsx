@@ -3,15 +3,17 @@ import { TemplateContext } from '../context/templateContext';
 import { UseModalHook } from '../hooks/modals';
 import { Modal } from 'bootstrap';
 import Template from './template';
+import { bgContext } from '../context/bgcontext';
 
 function TemplateCard({ templateName, templateBgImage }) {
   const [showLoader, hideLoader] = UseModalHook();
   const { setTemplateName } = useContext(TemplateContext);
+  const {setBgImg}=useContext(bgContext)
 
   const selecteTempalte = (e) => {
     console.log('selected template');
     setTemplateName({ name: e.target.innerText, bgimg: templateBgImage });
-
+    setBgImg(templateBgImage)
     showLoader('Loader');
     setTimeout(() => {
       hideLoader('Loader');

@@ -6,7 +6,7 @@ function EditorSideBar({ onAddHeading }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isBgtoggle, setIsBgtoggle] = useState(false)
   const [isImg, setIsImg] = useState(false)
-  const [file, setfile] = useState("");
+  const [fileUrl, setFileUrl] = useState("");
   const [showLoader, hideLoader] = UseModalHook()
   // const []
 
@@ -27,7 +27,7 @@ function EditorSideBar({ onAddHeading }) {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+ 
   return (
     <>
       {
@@ -35,7 +35,7 @@ function EditorSideBar({ onAddHeading }) {
           <CropModal
             type="square"
             bgRatio={25 / 30}
-            image={URL.createObjectURL(file)} />
+            image={fileUrl} />
         )
       }
       <button
@@ -72,17 +72,17 @@ function EditorSideBar({ onAddHeading }) {
               </div>
               <div>
                 <label for="formFileSm" className="form-label">image</label>
-                <input className="form-control form-control-sm"
+                <input
+                  type="file"
                   onChange={(e) => {
+                    const file = e.target.files[0];
+                    setFileUrl(URL.createObjectURL(file)); // Blob URL ek baar hi generate
                     setIsImg(true);
-                   
-                      setfile(e.target.files[0]);
-              
                     setTimeout(() => {
                       showLoader("cropper")
-                    }, 1000)
+                    }, 500);
                   }}
-                  id="formFileSm" accept="image" type="file" />
+                />
               </div>
             </div>
           ) : ""}

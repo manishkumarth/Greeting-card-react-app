@@ -1,4 +1,4 @@
-import {createContext, useState } from "react";
+import {createContext, useEffect, useState } from "react";
 
 export const bgContext = createContext()
 
@@ -8,6 +8,10 @@ function BackgroundUpdate({ children }) {
     const changeBgimage=()=>{
 
     }
+    useEffect(()=>{
+        console.log("imagePath_inside context",bgImg)
+
+    })
     return (
         <bgContext.Provider value={{bgColor,setBgcolor,bgImg,setBgImg,changeBgimage}}>
             {children}
