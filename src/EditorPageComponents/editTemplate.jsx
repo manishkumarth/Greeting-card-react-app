@@ -37,10 +37,11 @@ function EditTemplate() {
             <EditorSideBar onAddHeading={addHeading} />
 
             <div
+            // height="100"
                 style={{
                     flex: 1,
                     position: "relative",
-                    height: "100vh",
+                    height: "90vh",
                    
                 }}
             >

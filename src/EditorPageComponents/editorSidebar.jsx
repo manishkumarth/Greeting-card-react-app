@@ -3,21 +3,18 @@ import CropModal from "../components/cropmodal";
 import { UseModalHook } from "../hooks/modals";
 
 function EditorSideBar({ onAddHeading }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isBgtoggle, setIsBgtoggle] = useState(false)
   const [isImg, setIsImg] = useState(false)
   const [fileUrl, setFileUrl] = useState("");
   const [showLoader, hideLoader] = UseModalHook()
   // const []
 
-  // ✅ Adjust sidebar open/closed based on device width
   useLayoutEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        // desktop: open by default
-        setIsOpen(true);
+        setIsOpen(false);
       } else {
-        // mobile: closed by default
         setIsOpen(false);
       }
     };
